@@ -6,17 +6,18 @@ mod binary;
 mod errors;
 pub mod hashes;
 pub use errors::*;
+
 pub use binary::{Binary, to_json_binary, from_json};
 
 
-#[cfg(feature = "std")]
+#[cfg(any(feature = "std", not(feature = "substrate")))]
 pub use std::{
     string::{ToString, String},
     vec, vec::Vec, 
     format
 };
 
-#[cfg(not(feature = "std"))]
+#[cfg(all(not(feature = "std"), feature = "substrate"))]
 pub use ink::prelude::{
     string::{ToString, String},
     vec, vec::Vec, 
@@ -57,11 +58,11 @@ pub mod substrate {
     }
 }
 
-#[cfg(feature = "cosmwasm")]
+/* #[cfg(feature = "cosmwasm")]
 use cosmwasm::*;
 #[cfg(feature = "substrate")]
 use substrate::*;
-
+ */
 
 
 #[macro_export]
@@ -91,7 +92,11 @@ pub trait Verifiable   {
 
 
     #[cfg(feature = "substrate")]
-    fn verified_ink<'a>(&self,  _ : InkApi<'a, impl InkEnvironment + Clone>) -> Result<Self, AuthError> 
+    fn verified_ink<'a>(
+        &self,  
+        _ : substrate::InkApi<'a, 
+        impl substrate::InkEnvironment + Clone>
+    ) -> Result<Self, AuthError> 
         where Self: Clone
     {
         #[cfg(feature = "native")]
@@ -103,10 +108,14 @@ pub trait Verifiable   {
         return Err(AuthError::generic("Not implemented"));
     }
 
-
     
     #[cfg(feature = "cosmwasm")]
-    fn verified_cosmwasm(& self, _:  &dyn Api, _:  &Env, _: &Option<MessageInfo>) -> Result<Self, AuthError> 
+    fn verified_cosmwasm(
+        &self, 
+        _:  &dyn cosmwasm::Api, 
+        _:  &cosmwasm::Env, 
+        _:  &Option<cosmwasm::MessageInfo>
+    ) -> Result<Self, AuthError> 
         where Self: Clone
     {
         #[cfg(feature = "native")]

@@ -1,7 +1,7 @@
 #[cfg(feature = "cosmwasm")]
 use saa_common::cosmwasm::{Api, Env, MessageInfo};
+use saa_common::{AuthError, Binary, CredentialId, Verifiable};
 use saa_schema::wasm_serde;
-use saa_common::{AuthError, Binary, CredentialId, ToString, Verifiable};
 
 #[cfg(any(feature = "cosmwasm", feature = "native"))]
 use saa_common::hashes::sha256;

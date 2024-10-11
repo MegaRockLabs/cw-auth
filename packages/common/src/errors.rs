@@ -1,6 +1,5 @@
 #[cfg(any(feature = "std", not(feature = "substrate")))]
 use {thiserror::Error, saa_schema::wasm_serde};
-
 use {crate::String, std::string::FromUtf8Error};
 
 

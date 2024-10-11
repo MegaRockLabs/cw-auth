@@ -7,7 +7,7 @@ use saa_common::crypto::secp256k1_recover_pubkey;
 use saa_schema::wasm_serde;
 
 use saa_common::{
-    hashes::keccak256_fixed, AuthError, Binary, CredentialId, ToString, String, Verifiable 
+    hashes::keccak256_fixed, AuthError, Binary, CredentialId, String, Verifiable 
 };
 
 use super::utils::{get_recovery_param, preamble_msg_eth};

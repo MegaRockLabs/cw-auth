@@ -4,8 +4,7 @@ use saa_common::cosmwasm::{Api, Env, MessageInfo};
 use saa_schema::wasm_serde;
 
 use saa_common::{
-    ToString, Binary,
-    AuthError, Verifiable, CredentialId,
+    Binary, AuthError, Verifiable, CredentialId,
     
 };
 

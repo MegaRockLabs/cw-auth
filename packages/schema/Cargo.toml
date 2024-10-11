@@ -7,16 +7,16 @@ version = { workspace = true }
 license = { workspace = true }
 
 [dependencies]
-macros-proto        = { path = "../macros-proto", version = "0.11.1", package = "saa-macros-proto" }
+macros-proto        = { path = "../macros-proto", version = "0.11.2", package = "saa-macros-proto" }
 
 # Substrate
-scale               = { workspace = true, default-features = false, features = ["derive"], optional = true }
-scale-info          = { workspace = true, default-features = false, features = ["derive"], optional = true }
+scale               = { workspace = true, optional = true }
+scale-info          = { workspace = true, optional = true }
 # CosmWasm
-serde               = { workspace = true, default-features = false, features = ["derive"], optional = true }
-schemars            = { workspace = true, default-features = false, features = ["derive"], optional = true }
+serde               = { workspace = true, optional = true }
+schemars            = { workspace = true, optional = true }
 # Solana
-borsh               = { workspace = true, default-features = false, features = ["derive"], optional = true }
+borsh               = { workspace = true, optional = true }
 
 
 [features]
