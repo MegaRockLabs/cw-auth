@@ -1,13 +1,14 @@
 [package]
 name    = "saa-schema"
 description = "Macros and serialization utlities for various blockchain based virtual machines"
-edition = { workspace = true }
-authors = { workspace = true }
-version = { workspace = true }
-license = { workspace = true }
+edition     = { workspace = true }
+authors     = { workspace = true }
+repository  = { workspace = true }
+version     = { workspace = true }
+license     = { workspace = true }
 
 [dependencies]
-macros-proto        = { path = "../macros-proto", version = "0.11.2", package = "saa-macros-proto" }
+macros-proto        = { path = "../macros-proto", version = "0.11.3", package = "saa-macros-proto" }
 
 # Substrate
 scale               = { workspace = true, optional = true }
